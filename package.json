@@ -1,0 +1,31 @@
+{
+  "name": "w-commerce",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=production babel-node --presets @babel/preset-env -- index.js ",
+    "build": "cd client && npm install && npm run build && cd ..",
+    "dev": "concurrently \"npm run dev:server\" \"npm run client\"",
+    "dev:server": "NODE_ENV=development nodemon index.js --exec babel-node --presets @babel/preset-env --watch ./",
+    "client": "cd client && npm run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jokeer",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "mongodb": "^4.3.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.8",
+    "@babel/core": "^7.16.12",
+    "@babel/node": "^7.16.8",
+    "@babel/preset-env": "^7.16.11",
+    "concurrently": "^7.0.0",
+    "nodemon": "^2.0.15"
+  }
+}
