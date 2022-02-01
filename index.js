@@ -11,7 +11,7 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-const server = new Server(app)
+export const server = new Server(app)
 const init = async () => {
     await server.init()
 }
