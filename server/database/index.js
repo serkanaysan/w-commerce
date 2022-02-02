@@ -13,5 +13,4 @@ export default class DataBase {
         await this.client.connect()
         this.db = this.client.db(this.dbName)
     }
-      
 }
