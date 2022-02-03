@@ -1,15 +1,46 @@
-import React from "react"
+import React, { useContext } from "react"
 import { withTranslation } from "react-i18next"
+import { AppBar, IconButton, Toolbar, Typography, Button, Switch } from "@mui/material"
+import MenuIcon from '@mui/icons-material/Menu'
+import { AppContext } from "../context/PageProvider"
 
 const HomePage = ({ t }) => {
     
     const title = t('title')
 
+    const context = useContext(AppContext)
+    const wcommerceCore = context.wcommerceCore
+    const persistentStore = wcommerceCore.persistentStore
+
+    console.log(persistentStore.getTheme())
+
+    const onChangeSwitch = (e) => {
+        const checked = e.target.checked
+        if(checked) {
+            persistentStore.setTheme('dark')
+        } else {
+            persistentStore.setTheme('dark')
+        }
+    }
+
     return (
-        <div>
-            Home Page<br />
-            {title}
-        </div>
+        <AppBar position="sticky">
+            <Toolbar>
+            <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                sx={{ mr: 2 }}
+            >
+                <MenuIcon />
+            </IconButton>
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                News
+            </Typography>
+            <Switch onChange={onChangeSwitch} />
+            </Toolbar>
+        </AppBar>
     )
 }
 
