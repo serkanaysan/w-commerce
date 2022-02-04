@@ -4,9 +4,9 @@ import { AppBar, IconButton, Toolbar, Typography, Button, Switch } from "@mui/ma
 import MenuIcon from '@mui/icons-material/Menu'
 import { AppContext } from "../context/PageProvider"
 
-const HomePage = ({ t }) => {
+const HomePage = ({ t, i18n }) => {
     
-    const title = t('title')
+    const title = t('news')
 
     const context = useContext(AppContext)
     const wcommerceCore = context.wcommerceCore
@@ -25,6 +25,10 @@ const HomePage = ({ t }) => {
             context.setTheme('light')
         }
     }
+
+    const changeLanguage = (lng) => {
+        i18n.changeLanguage(lng);
+    }
     
 
     return (
@@ -40,10 +44,12 @@ const HomePage = ({ t }) => {
                 <MenuIcon />
             </IconButton>
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                News
+                {title}
             </Typography>
             <Switch checked={checked} onChange={onChangeSwitch} />
             </Toolbar>
+            <button onClick={() => changeLanguage('tr')}>tr</button>
+      <button onClick={() => changeLanguage('en')}>en</button>
         </AppBar>
     )
 }
