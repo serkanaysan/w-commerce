@@ -11,7 +11,6 @@ const theme = createTheme({
 
 export const lightTheme = createTheme({
     ...theme,
-    direction: 'rtl',
     palette: {
         mode: THEME_MODES.LIGHT
     }
@@ -19,7 +18,6 @@ export const lightTheme = createTheme({
 
 export const darkTheme = createTheme({
     ...theme,
-    direction: 'ltr',
     palette: {
         mode: THEME_MODES.DARK
     }
