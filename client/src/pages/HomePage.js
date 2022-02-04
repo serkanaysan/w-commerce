@@ -50,6 +50,7 @@ const HomePage = ({ t, i18n }) => {
             </Toolbar>
             <button onClick={() => changeLanguage('tr')}>tr</button>
       <button onClick={() => changeLanguage('en')}>en</button>
+      <button onClick={() => changeLanguage('ar')}>ar</button>
         </AppBar>
     )
 }

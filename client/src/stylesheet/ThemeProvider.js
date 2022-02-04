@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ThemeProvider as MuiThemeProvicer } from "@mui/material"
+import { withTranslation } from "react-i18next"
 import { AppContext } from '../context/PageProvider'
 import { lightTheme, darkTheme } from './'
 
-const ThemeProvider = ({ children }) => {
+const ThemeProvider = ({ children, i18n }) => {
 
     const context = useContext(AppContext)
     const persistentStore = context.wcommerceCore.persistentStore
@@ -16,9 +17,11 @@ const ThemeProvider = ({ children }) => {
     
     return (
         <MuiThemeProvicer theme={theme}>
-            {children}
+            <div dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
+                {children}
+            </div>
         </MuiThemeProvicer>
     )
 }
 
-export default ThemeProvider
+export default withTranslation()(ThemeProvider)
