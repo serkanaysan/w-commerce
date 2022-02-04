@@ -41,6 +41,7 @@ class AppProvider extends Component {
                     ready,
                     loading,
                     theme,
+                    setTheme: (theme) => this.setState({ theme }),
                     wcommerceCore
                 }}>
                 {ready && this.props.children}

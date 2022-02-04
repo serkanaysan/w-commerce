@@ -1,8 +1,7 @@
-import React, { Suspense, useContext, useEffect, useState } from "react"
+import React, { Suspense } from "react"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { ThemeProvider } from "@mui/material"
-import { lightTheme, darkTheme } from './stylesheet'
 import AppProvider from './context/PageProvider'
+import ThemeProvider from "./stylesheet/ThemeProvider"
 import HomePage from "./pages/HomePage"
 import ProfilePage from "./pages/ProfilePage"
 
@@ -11,7 +10,7 @@ function App() {
     <Suspense fallback={<div>Loading... </div>}>
       <BrowserRouter>
         <AppProvider>
-          <ThemeProvider theme={lightTheme}>
+          <ThemeProvider>
             <Routes>
               <Route path="/" element={<HomePage />}/>
               <Route path="/profile" element={<ProfilePage />}/>

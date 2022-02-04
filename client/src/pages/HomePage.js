@@ -11,17 +11,21 @@ const HomePage = ({ t }) => {
     const context = useContext(AppContext)
     const wcommerceCore = context.wcommerceCore
     const persistentStore = wcommerceCore.persistentStore
-
-    console.log(persistentStore.getTheme())
+    const themeMode = persistentStore.getTheme()
+    const checked = themeMode === 'light' ? false : true
 
     const onChangeSwitch = (e) => {
         const checked = e.target.checked
+        
         if(checked) {
             persistentStore.setTheme('dark')
+            context.setTheme('dark')
         } else {
-            persistentStore.setTheme('dark')
+            persistentStore.setTheme('light')
+            context.setTheme('light')
         }
     }
+    
 
     return (
         <AppBar position="sticky">
@@ -38,7 +42,7 @@ const HomePage = ({ t }) => {
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                 News
             </Typography>
-            <Switch onChange={onChangeSwitch} />
+            <Switch checked={checked} onChange={onChangeSwitch} />
             </Toolbar>
         </AppBar>
     )
