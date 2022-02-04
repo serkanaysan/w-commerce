@@ -2,17 +2,17 @@ import React, { useContext, useEffect, useState } from 'react'
 import { ThemeProvider as MuiThemeProvicer } from "@mui/material"
 import { withTranslation } from "react-i18next"
 import { AppContext } from '../context/PageProvider'
-import { lightTheme, darkTheme } from './'
+import { lightTheme, darkTheme, THEME_MODES } from './'
 
 const ThemeProvider = ({ children, i18n }) => {
 
     const context = useContext(AppContext)
     const persistentStore = context.wcommerceCore.persistentStore
     const themeMode = persistentStore.getTheme()
-    const [theme, setTheme] = useState(themeMode === 'light' ? lightTheme : darkTheme)
+    const [theme, setTheme] = useState(themeMode === THEME_MODES.LIGHT ? lightTheme : darkTheme)
     
     useEffect(() => {
-        setTheme(themeMode === 'light' ? lightTheme : darkTheme)
+        setTheme(themeMode === THEME_MODES.LIGHT ? lightTheme : darkTheme)
     }, [context.theme])
     
     return (

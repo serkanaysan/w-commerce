@@ -1,8 +1,9 @@
 import React, { useContext } from "react"
 import { withTranslation } from "react-i18next"
-import { AppBar, IconButton, Toolbar, Typography, Button, Switch } from "@mui/material"
+import { AppBar, IconButton, Toolbar, Typography, Button, Switch, TextField } from "@mui/material"
 import MenuIcon from '@mui/icons-material/Menu'
 import { AppContext } from "../context/PageProvider"
+import { THEME_MODES } from "../stylesheet"
 
 const HomePage = ({ t, i18n }) => {
     
@@ -12,17 +13,17 @@ const HomePage = ({ t, i18n }) => {
     const wcommerceCore = context.wcommerceCore
     const persistentStore = wcommerceCore.persistentStore
     const themeMode = persistentStore.getTheme()
-    const checked = themeMode === 'light' ? false : true
+    const checked = themeMode === THEME_MODES.LIGHT ? false : true
 
     const onChangeSwitch = (e) => {
         const checked = e.target.checked
         
         if(checked) {
-            persistentStore.setTheme('dark')
-            context.setTheme('dark')
+            persistentStore.setTheme(THEME_MODES.DARK)
+            context.setTheme(THEME_MODES.DARK)
         } else {
-            persistentStore.setTheme('light')
-            context.setTheme('light')
+            persistentStore.setTheme(THEME_MODES.LIGHT)
+            context.setTheme(THEME_MODES.LIGHT)
         }
     }
 
